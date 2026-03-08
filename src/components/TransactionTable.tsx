@@ -43,12 +43,12 @@ export function TransactionTable() {
             <TableHead className="text-xs font-medium text-muted-foreground">Tipo</TableHead>
             <TableHead className="text-xs font-medium text-muted-foreground">Valor</TableHead>
             <TableHead className="text-xs font-medium text-muted-foreground">Status</TableHead>
-            <TableHead className="text-xs font-medium text-muted-foreground text-right">Ações</TableHead>
+            <TableHead className="text-xs font-medium text-muted-foreground">Ações</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {transactions.map((tx) => (
-            <TableRow key={tx.id} className="hover:bg-muted/30">
+            <TableRow key={tx.id} className="hover:bg-muted/60">
               <TableCell>
                 <div className="text-sm font-medium text-foreground">{tx.id}</div>
                 <div className="text-xs text-muted-foreground">{tx.company}</div>
@@ -64,7 +64,7 @@ export function TransactionTable() {
                   {tx.status}
                 </Badge>
               </TableCell>
-              <TableCell className="text-right">
+              <TableCell>
                 <Button
                   variant="ghost"
                   size="sm"
