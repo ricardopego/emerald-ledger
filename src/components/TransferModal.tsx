@@ -1,10 +1,5 @@
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
+  Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -27,7 +22,7 @@ export function TransferModal({ open, onOpenChange }: TransferModalProps) {
       toast.error("Preencha todos os campos.");
       return;
     }
-    toast.success(`Transferência de R$ ${amount} para conta ${accountId} realizada.`);
+    toast.success(`Venda de R$ ${amount} registrada para conta ${accountId}.`);
     setAccountId("");
     setAmount("");
     onOpenChange(false);
@@ -35,32 +30,23 @@ export function TransferModal({ open, onOpenChange }: TransferModalProps) {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="sm:max-w-md border-2 border-foreground shadow-[4px_4px_0_0_hsl(var(--foreground))]">
+      <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-xl font-black uppercase tracking-wider">
-            Nova Transferência
-          </DialogTitle>
-          <DialogDescription className="text-muted-foreground">
-            Informe os dados da transferência abaixo.
-          </DialogDescription>
+          <DialogTitle className="text-lg font-semibold">Nova Venda</DialogTitle>
+          <DialogDescription>Informe os dados da venda abaixo.</DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4 mt-2">
           <div className="space-y-2">
-            <Label htmlFor="accountId" className="text-xs uppercase tracking-wider font-bold">
-              ID da Conta Destino
-            </Label>
+            <Label htmlFor="accountId" className="text-sm font-medium">ID da Conta</Label>
             <Input
               id="accountId"
               placeholder="ex: ACC-00421"
               value={accountId}
               onChange={(e) => setAccountId(e.target.value)}
-              className="border-2 border-foreground/20 focus:border-primary font-mono"
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="amount" className="text-xs uppercase tracking-wider font-bold">
-              Valor (R$)
-            </Label>
+            <Label htmlFor="amount" className="text-sm font-medium">Valor (R$)</Label>
             <Input
               id="amount"
               type="number"
@@ -69,16 +55,14 @@ export function TransferModal({ open, onOpenChange }: TransferModalProps) {
               placeholder="0,00"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="border-2 border-foreground/20 focus:border-primary font-mono text-lg"
+              className="text-lg"
             />
           </div>
           <DialogFooter className="pt-2">
-            <Button type="button" variant="outline" onClick={() => onOpenChange(false)} className="border-2 border-foreground/20 font-bold uppercase text-xs tracking-wider">
+            <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
               Cancelar
             </Button>
-            <Button type="submit" className="font-bold uppercase text-xs tracking-wider border-2 border-primary">
-              Confirmar
-            </Button>
+            <Button type="submit">Confirmar</Button>
           </DialogFooter>
         </form>
       </DialogContent>

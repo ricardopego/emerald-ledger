@@ -1,10 +1,9 @@
-import { LayoutDashboard, ArrowLeftRight, FileText, Settings, LogOut } from "lucide-react";
+import { LayoutDashboard, Store, FileText, Settings, LogOut } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -13,8 +12,8 @@ import {
 } from "@/components/ui/sidebar";
 
 const menuItems = [
-  { title: "Dashboard", url: "/", icon: LayoutDashboard },
-  { title: "Transferências", url: "/transfers", icon: ArrowLeftRight },
+  { title: "Visão Geral", url: "/", icon: LayoutDashboard },
+  { title: "Lojistas", url: "/merchants", icon: Store },
   { title: "Extrato", url: "/statements", icon: FileText },
   { title: "Configurações", url: "/settings", icon: Settings },
 ];
@@ -24,34 +23,39 @@ export function AppSidebar() {
   const collapsed = state === "collapsed";
 
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" className="border-r border-border">
       <SidebarContent className="pt-6">
-        <div className="px-4 mb-8">
+        <div className="px-5 mb-8">
           {!collapsed ? (
-            <h1 className="text-lg font-black uppercase tracking-widest text-sidebar-primary">
-              Mini-Ledger
-            </h1>
+            <span className="text-lg font-bold text-foreground tracking-tight">Mini-Ledger</span>
           ) : (
-            <span className="text-lg font-black text-sidebar-primary">ML</span>
+            <span className="text-lg font-bold text-foreground">M</span>
           )}
         </div>
 
         <SidebarGroup>
-          <SidebarGroupLabel className="text-xs uppercase tracking-widest text-sidebar-foreground/50">
-            Menu
-          </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {menuItems.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url} className="flex items-center gap-3 text-sidebar-foreground hover:text-sidebar-accent-foreground hover:bg-sidebar-accent transition-colors">
-                      <item.icon className="h-4 w-4 shrink-0" />
-                      {!collapsed && <span className="font-medium text-sm">{item.title}</span>}
-                    </a>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+              {menuItems.map((item) => {
+                const isActive = item.url === "/";
+                return (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton asChild>
+                      <a
+                        href={item.url}
+                        className={`flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors ${
+                          isActive
+                            ? "bg-accent text-accent-foreground font-medium"
+                            : "text-sidebar-foreground hover:bg-muted hover:text-foreground"
+                        }`}
+                      >
+                        <item.icon className="h-4 w-4 shrink-0" />
+                        {!collapsed && <span>{item.title}</span>}
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                );
+              })}
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
@@ -61,9 +65,9 @@ export function AppSidebar() {
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild>
-              <button className="flex items-center gap-3 text-sidebar-foreground/50 hover:text-sidebar-foreground transition-colors w-full">
+              <button className="flex items-center gap-3 text-muted-foreground hover:text-foreground transition-colors w-full rounded-md px-3 py-2 text-sm">
                 <LogOut className="h-4 w-4 shrink-0" />
-                {!collapsed && <span className="text-sm">Sair</span>}
+                {!collapsed && <span>Sair</span>}
               </button>
             </SidebarMenuButton>
           </SidebarMenuItem>
