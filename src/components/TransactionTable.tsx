@@ -64,7 +64,7 @@ export function TransactionTable() {
                   {tx.status}
                 </Badge>
               </TableCell>
-              <TableCell className="text-right">
+              <TableCell>
                 <Button
                   variant="ghost"
                   size="sm"
