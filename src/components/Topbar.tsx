@@ -1,7 +1,6 @@
 import { Search, Bell } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { Menu } from "lucide-react";
 
 export function Topbar() {
   return (
