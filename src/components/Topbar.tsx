@@ -6,9 +6,7 @@ export function Topbar() {
   return (
     <header className="h-14 flex items-center justify-between border-b border-border bg-card px-6">
       <div className="flex items-center gap-4">
-        <SidebarTrigger>
-          <Menu className="h-5 w-5" />
-        </SidebarTrigger>
+        <SidebarTrigger className="h-9 w-9" />
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
