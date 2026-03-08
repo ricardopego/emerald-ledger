@@ -48,7 +48,7 @@ export function TransactionTable() {
         </TableHeader>
         <TableBody>
           {transactions.map((tx) => (
-            <TableRow key={tx.id} className="hover:bg-muted/30">
+            <TableRow key={tx.id} className="hover:bg-muted/60">
               <TableCell>
                 <div className="text-sm font-medium text-foreground">{tx.id}</div>
                 <div className="text-xs text-muted-foreground">{tx.company}</div>
