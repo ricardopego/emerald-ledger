@@ -43,7 +43,7 @@ export function TransactionTable() {
             <TableHead className="text-xs font-medium text-muted-foreground">Tipo</TableHead>
             <TableHead className="text-xs font-medium text-muted-foreground">Valor</TableHead>
             <TableHead className="text-xs font-medium text-muted-foreground">Status</TableHead>
-            <TableHead className="text-xs font-medium text-muted-foreground text-right">Ações</TableHead>
+            <TableHead className="text-xs font-medium text-muted-foreground">Ações</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
