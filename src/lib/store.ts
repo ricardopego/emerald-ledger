@@ -76,7 +76,14 @@ export function addTransaction(tx: Omit<Transaction, "id">) {
   notify();
 }
 
-export function getSummary() {
+export interface Summary {
+  totalGross: number;
+  totalFees: number;
+  totalExits: number;
+  balance: number;
+}
+
+export function getSummary(): Summary {
   const entries = _transactions.filter((t) => t.type === "entrada");
   const exits = _transactions.filter((t) => t.type === "saida");
 
