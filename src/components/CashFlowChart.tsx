@@ -76,14 +76,8 @@ export function CashFlowChart() {
         </div>
       </div>
       <ResponsiveContainer width="100%" height={280}>
-        <AreaChart data={data}>
-          <defs>
-            <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="hsl(var(--primary))" stopOpacity={0.2} />
-              <stop offset="95%" stopColor="hsl(var(--primary))" stopOpacity={0} />
-            </linearGradient>
-          </defs>
-          <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+        <BarChart data={data}>
+          <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
           <XAxis dataKey="name" tick={{ fontSize: 12, fill: "hsl(var(--muted-foreground))" }} axisLine={false} tickLine={false} />
           <YAxis tick={{ fontSize: 12, fill: "hsl(var(--muted-foreground))" }} axisLine={false} tickLine={false} tickFormatter={(v) => `R$${(v / 1000).toFixed(0)}k`} />
           <Tooltip
@@ -95,15 +89,12 @@ export function CashFlowChart() {
               fontSize: "13px",
             }}
           />
-          <Area
-            type="monotone"
+          <Bar
             dataKey="value"
-            stroke="hsl(var(--primary))"
-            strokeWidth={2}
-            fillOpacity={1}
-            fill="url(#colorValue)"
+            fill="hsl(var(--primary))"
+            radius={[6, 6, 0, 0]}
           />
-        </AreaChart>
+        </BarChart>
       </ResponsiveContainer>
     </div>
   );
